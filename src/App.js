@@ -7,24 +7,21 @@ import RecipeData from "./RecipeData";
 function App() {
   const [recipes, setRecipes] = useState(RecipeData);
 
-  const createRecipe = (recipe) => {
+  const addRecipeHandler = (recipe) => {
     setRecipes([...recipes, recipe]);
   };
 
-  function deleteRecipe(index) {
-  setRecipes(recipes.filter((recipe, i) => {
-    return i !== index;
-  }));
-}
+  const deleteRecipe = (index) => {
+    setRecipes(recipes.filter((recipe, i) => i !== index));
+  };
 
-  
   return (
     <div className="App">
       <header>
         <h1 className="title">Delicious Food Recipes</h1>
       </header>
       <RecipeList recipes={recipes} deleteRecipe={deleteRecipe} />
-      <RecipeCreate createRecipe={createRecipe} />
+      <RecipeCreate addRecipeHandler={addRecipeHandler} />
     </div>
   );
 }
